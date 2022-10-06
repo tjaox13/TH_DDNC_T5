@@ -1,0 +1,1 @@
+![Tuan5_B1](Tuan5DDNC.PNG)

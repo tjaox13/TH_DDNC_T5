@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, FlatList,  TextInput, Modal, TouchableHighlight,Image  } from 'react-native';
+import { StyleSheet, Button, Text, View, FlatList, TouchableOpacity, TextInput, Modal, TouchableHighlight,Image  } from 'react-native';
 import Data from './Data';
 
 export default class List extends Component {
@@ -44,11 +44,23 @@ export default class List extends Component {
                 <View style={styles.marginLeft}>
                     <Image style={{
             resizeMode: "cover",
-            height: 74,
-            width: 74
+            height: 72,
+            width: 72
           }} source={item.logo} />
+                </View >
+                <View style={{ flex: 4 }}>
+                    <Text style={styles.text}> {item.text}</Text>
+                    <Text style={styles.text}> {item.shop}</Text>
                 </View>
-                <Text style={styles.text}> {item.text}, {item.text2} </Text>
+                    
+                <View>
+                    <View style={styles.fixToText}>
+                        <Button
+                            color="#F31111"
+                            title="Chat"
+                        />
+                    </View>
+                </View>
             </View>
         </TouchableHighlight>
     )
@@ -57,18 +69,54 @@ export default class List extends Component {
         return (
             <View style={styles.contentContainer}>
                 <View style={styles.header}>
-                    <Text style={styles.headerText}> Chat </Text>
+                    <View>
+                        <Image style={{
+                        marginRight: 150,
+                        resizeMode: "cover",
+                        height: 20,
+                        width: 20 }} source={require('./assets/back.png')} />
+                    </View>
+                    <View >
+                        <Text style={styles.headerText}>Chat</Text>
+                    </View>
+                    <View>
+                        <Image style={{
+                            marginLeft: 150,
+                            resizeMode: "cover",
+                            height: 20,
+                            width: 20
+                        }} source={require('./assets/shopping-cart.png')} />
+                    </View>
                 </View>
                 <View style={styles.wonder}>
                     <Text style={styles.wonderText}> Bạn có thắc mắc với sản phẩm vừa xem. Đừng ngại chat với shop! </Text>
                 </View>
+                
                 <FlatList 
                     data={this.state.data}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={this.renderItem}
+                    
                 />
                 <View style={styles.bottom}>
-                    <Text style={styles.bottomText}> Bottom </Text>
+                    <Image style={{
+                        marginRight: 150,
+                        resizeMode: "cover",
+                        height: 25,
+                        width: 25
+                    }} source={require('./assets/menu.png')} />
+                    <Image style={{
+                        marginLeft: 0,
+                        resizeMode: "cover",
+                        height: 25,
+                        width: 25
+                    }} source={require('./assets/home.png')} />
+                    <Image style={{
+                        marginLeft: 150,
+                        resizeMode: "cover",
+                        height: 25,
+                        width: 25
+                    }} source={require('./assets/undo.png')} />
                 </View>
             </View>
         )
@@ -78,6 +126,7 @@ export default class List extends Component {
 const styles = StyleSheet.create({
     header: {
         height: 42,
+        flexDirection: 'row',
         backgroundColor: '#1BA9FF',
         alignItems: 'center',
         justifyContent: 'center',
@@ -97,10 +146,11 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     bottom: {
-        height: 60,
-        backgroundColor: 'orange',
-        alignItems: 'center',
+        height: 49,
+        flexDirection: 'row',
+        backgroundColor: '#1BA9FF',
         justifyContent: 'center',
+        alignItems: 'center',
     },
     bottomText: {
         fontSize: 20,
@@ -124,8 +174,18 @@ const styles = StyleSheet.create({
         height: 74,
     },
     text: {
-        marginVertical: 30,
+        marginVertical: 0,
         fontSize: 17,
         marginLeft: 10,
+        marginBottom: 10,
     },
+    fixToText: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 'auto',
+        width: 100,
+        height: 55,
+        
+    },
+    
 })
